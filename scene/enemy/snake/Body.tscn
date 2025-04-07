@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ckdingh5txht1"]
+
+[node name="Body" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.0
+offset_right = 5.0
+offset_bottom = 10.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
