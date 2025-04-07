@@ -8,7 +8,7 @@ enum State {
 }
 
 # 移动相关参数
-@export var speed = 200.0  # 移动速度（像素/秒）
+@export var speed = 100.0  # 移动速度（像素/秒）
 @export var segment_distance = 10.0  # 身体段之间的距离
 @export var screen_width = 640.0
 @export var screen_height = 320.0
