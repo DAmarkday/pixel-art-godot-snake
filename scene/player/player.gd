@@ -2,10 +2,11 @@ extends CharacterBody2D
 class_name Player
 
 
-const SPEED = 500.0 
+const SPEED = 100.0 
 @onready var anim = $Body/AnimatedSprite2D
 @onready var body = $Body
 @onready var camera=$Camera2D
+@onready var weapon_node = $Body/WeaponNode
 
 var _current_anim = 'down_'
 
@@ -32,6 +33,7 @@ func changeAnim():
 		anim.play(_current_anim + 'move')
 		
 	var _position = get_global_mouse_position()
+	weapon_node.look_at(_position)
 	
 	if _position.x>position.x and body.scale.x !=1:
 		body.scale.x = 1
@@ -39,6 +41,7 @@ func changeAnim():
 		body.scale.x = -1
 		
 func get_movement_dir() ->String:
+	weapon_node.z_index = 1
 	if velocity == Vector2.ZERO:
 		return 'lr_'
 	
@@ -48,6 +51,7 @@ func get_movement_dir() ->String:
 	if 45 <=degree and degree <135:
 		return 'down_'
 	elif -135 <=degree and degree <-45:
+		weapon_node.z_index = 0
 		return 'up_'
 
 	

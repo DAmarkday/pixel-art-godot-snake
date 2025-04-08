@@ -6,6 +6,8 @@ const _player = preload("res://scene/player/Player.tscn")
 
 # Called when the node enters the scene tree for the first time.
 
+var _defaultWeapon = preload("res://scene/weapon/BaseWeapon.tscn")
+
 func _ready() -> void:
 	# 初始化地图
 	var mapNode=_map.instantiate()
@@ -20,6 +22,10 @@ func _ready() -> void:
 		# 规范主角摄像机范围
 		instance.limitPlayerCamera(0,w,h,0)
 		instance.position = Vector2(320,160)
+		
+		#挂载武器
+		var wNode=_defaultWeapon.instantiate()
+		Game.player.weapon_node.add_child(wNode)
 	)
 	
 	add_child(mapNode)

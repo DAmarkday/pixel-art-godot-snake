@@ -469,16 +469,20 @@ script = ExtResource("1_ylfd0")
 texture = ExtResource("8_yqkgn")
 offset = Vector2(0, -3)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
 [node name="Body" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Body"]
+z_index = 1
 position = Vector2(-1, -9)
 sprite_frames = SubResource("SpriteFrames_f2342")
-animation = &"up_move"
+animation = &"down_idle"
 autoplay = "down_idle"
-frame_progress = 0.583625
 offset = Vector2(13, -2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WeaponNode" type="Node2D" parent="Body"]
+z_index = 1
+position = Vector2(1, -10)
 
 [node name="Camera2D" type="Camera2D" parent="."]
