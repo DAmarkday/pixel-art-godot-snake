@@ -25,6 +25,8 @@ var current_state = State.IDLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Game.map = self
+	
 	# 初始化蛇
 	snake_body.append(Vector2(screen_width / 2, screen_height / 2))
 	for i in range(3):

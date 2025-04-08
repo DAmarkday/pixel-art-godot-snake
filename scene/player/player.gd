@@ -9,6 +9,9 @@ const SPEED = 50.0
 
 var _current_anim = 'down_'
 
+func _ready() -> void:
+	Game.player = self
+	
 func _physics_process(delta):
 	var dir = Vector2.ZERO
 	dir.x = Input.get_axis("move_left","move_right")
