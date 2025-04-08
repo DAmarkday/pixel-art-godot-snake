@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 
-const SPEED = 50.0 
+const SPEED = 500.0 
 @onready var anim = $Body/AnimatedSprite2D
 @onready var body = $Body
 @onready var camera=$Camera2D
@@ -52,3 +52,12 @@ func get_movement_dir() ->String:
 
 	
 	return 'lr_'
+	
+	
+func limitPlayerCamera(top:int,right:int,bottom:int,left:int):
+	camera.limit_top=top
+	camera.limit_left=left
+	camera.limit_right=right
+	camera.limit_bottom=bottom
+	camera.limit_smoothed = true
+	pass

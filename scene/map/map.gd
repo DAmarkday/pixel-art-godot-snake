@@ -2,10 +2,13 @@ extends Node2D
 class_name Map
 
 @onready var LandNode = $Land
+signal mapIsReady(width:int,height:int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Game.map = self
+	var limitArr=computedLandNodeSize()
+	mapIsReady.emit(limitArr[0],limitArr[1])
 	pass # Replace with function body.
 
 
@@ -13,7 +16,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func getLandNodeSize():
+func computedLandNodeSize():
 	if LandNode:
 		# 获取使用的矩形区域（以瓦片为单位）
 		var used_rect =LandNode.get_used_rect()

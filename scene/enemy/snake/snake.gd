@@ -10,8 +10,8 @@ enum State {
 # 移动相关参数
 @export var speed = 100.0  # 移动速度（像素/秒）
 @export var segment_distance = 10.0  # 身体段之间的距离
-@export var screen_width = 640.0
-@export var screen_height = 320.0
+var screen_width = 0
+var screen_height = 0
 
 var body_scene = preload("res://scene/enemy/snake/Body.tscn")  # 蛇身段场景
 var food_scene = preload("res://scene/enemy/snake/Body.tscn")  # 食物场景
@@ -143,3 +143,10 @@ func _input(event):
 			spawn_food()
 			update_visuals()
 			enter_state(State.SEEKING)
+			
+			
+func setCurActiveRange(w:int,h:int):
+	screen_width = w
+	screen_height = h
+	
+	

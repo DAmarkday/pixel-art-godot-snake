@@ -10,21 +10,19 @@ const _player = preload("res://scene/player/Player.tscn")
 func _ready() -> void:
 	# 初始化地图
 	var mapNode=_map.instantiate()
+	var snakeNode=_snake.instantiate()
+	var instance = _player.instantiate()
+	
+	mapNode.connect('mapIsReady',func (w,h):
+		snakeNode.setCurActiveRange(w,h)
+		add_child(snakeNode)
+		add_child(instance)
+		instance.limitPlayerCamera(0,w,h,0)
+		instance.position = Vector2(320,160)
+	)
+	
 	add_child(mapNode)
 	
-	var snakeNode=_snake.instantiate()
-	add_child(snakeNode)
-	
-	var instance = _player.instantiate()
-	instance.position = Vector2(320,160)
-	add_child(instance)
-	
-	var limitArr=mapNode.getLandNodeSize()
-	instance.camera.limit_top=0
-	instance.camera.limit_left=0
-	instance.camera.limit_right=limitArr[0]
-	instance.camera.limit_bottom=limitArr[1]
-	instance.camera.limit_smoothed = true
 	pass # Replace with function body.
 
 
