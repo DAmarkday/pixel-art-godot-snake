@@ -9,14 +9,15 @@ enum State {
 
 # 移动相关参数
 @export var speed = 100.0  # 移动速度（像素/秒）
-@export var base_segment_distance = 30.0  # 基础身体段间距
+@export var base_segment_distance = 7.0  # 基础身体段间距
 @export var eating_def_per_body= 1  # 每吃一顿身体长大的倍率
-var eating_def_per_body_intervals = 1 # 每吃一顿每个body之间的间距增长倍率
 var screen_width = 0
 var screen_height = 0
 
+
+var Head_scene = preload("res://scene/enemy/snake/Head.tscn")  # 蛇身段场景
 var body_scene = preload("res://scene/enemy/snake/Body.tscn")  # 蛇身段场景
-var food_scene = preload("res://scene/enemy/snake/Body.tscn")  # 食物场景
+var food_scene = preload("res://scene/enemy/snake/Food.tscn")  # 食物场景
 
 # 蛇的属性
 var snake_body = []  # 存储蛇身体位置
@@ -138,15 +139,17 @@ func update_visuals():
 	
 	var base_scale = 1.0 + (snake_body.size() - 3) * eating_def_per_body  # 每增加一段增长0.1倍
 	for i in snake_body.size():
-		var body:Node2D = body_scene.instantiate()
+		var body:Node2D
+		if i== 0:
+			body = Head_scene.instantiate()
+		else:
+			body = body_scene.instantiate()
 		body.position = snake_body[i]
 		body.add_to_group("snake_body")
 		
 		# 使用浮点缩放而不是整数
 		body.scale = Vector2(base_scale, base_scale)
 		
-		if i == 0:
-			body.modulate = Color.RED  # 头部标红
 		add_child(body)
 
 # 可选：调试用输入
@@ -168,7 +171,8 @@ func _input(event):
 func get_dynamic_segment_distance() -> float:
 	# 随着蛇长度增加，间距逐渐变大
 	# 基础间距 + 每增加一段增加 0.5 的间距（可调整）
-	return base_segment_distance + (snake_body.size() - 3) * eating_def_per_body_intervals
+	var base_scale = 1.0 + (snake_body.size() - 3) * eating_def_per_body
+	return base_segment_distance * base_scale
 	
 func setCurActiveRange(w:int,h:int):
 	screen_width = w

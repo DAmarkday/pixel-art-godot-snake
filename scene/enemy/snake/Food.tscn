@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckdingh5txht1"]
+[gd_scene format=3 uid="uid://b0hut878ar56i"]
 
 [node name="Body" type="Node2D"]
 
@@ -12,4 +12,4 @@ offset_bottom = 10.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-color = Color(0.0392157, 0.321569, 0.0666667, 1)
+color = Color(0.854016, 0.894665, 0.292057, 1)
