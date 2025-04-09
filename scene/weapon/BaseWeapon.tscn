@@ -14,3 +14,5 @@ offset = Vector2(4, 0)
 
 [node name="BulletPoint" type="Node2D" parent="."]
 position = Vector2(9, -2)
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
