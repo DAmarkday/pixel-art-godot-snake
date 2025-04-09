@@ -65,3 +65,10 @@ func limitPlayerCamera(top:int,right:int,bottom:int,left:int):
 	camera.limit_bottom=bottom
 	camera.limit_smoothed = true
 	pass
+	
+	
+# 相机抖动
+func cameraOffset(offset,time):
+	var tween = create_tween()
+	tween.tween_property(camera,'offset',Vector2.ZERO,time).from(offset)
+	pass

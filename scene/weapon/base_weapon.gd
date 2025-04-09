@@ -11,6 +11,7 @@ class_name BaseWeapon
 
 @export var damage = 5 # 武器伤害
 @export var weapon_rof = 0.2  # 武器射击间隔,数值越大 两次射击的间隔越大。
+@export var weapon_recoil_rof = 0.2 # 武器后坐力参数
 @export var weapon_name = '默认枪械' # 武器显示的文本
 # 射击音频
 @export var shoot_audio = preload("res://audio/wpn_fire_m4.mp3")
@@ -27,6 +28,19 @@ var current_rof_tick = 0
 var current_bullet_count_in_single_magazine = 0 # 在当前弹夹中所有的子弹数量
 var current_magazine_counts = 0 # 当前的弹夹数量
 
+
+func weapon_anim():
+	# fire_particles.restart()
+	
+	var tween = create_tween().set_ease(Tween.EASE_IN)
+	tween.tween_property(Sprite,'scale:x',0.7,weapon_recoil_rof / 2)
+	tween.tween_property(Sprite,'scale:x',1,weapon_recoil_rof / 2)
+	if ShootAudio:
+		ShootAudio.play()
+	Game.player.cameraOffset(Vector2(-1,2),weapon_recoil_rof)
+	pass
+
+
 func shoot():
 	var instance = bullet.instantiate()
 	instance.global_position = BulletPoint.global_position
@@ -42,10 +56,9 @@ func shoot():
 	
 	#instance.current_weapon = self 
 	get_tree().root.add_child(instance)
-	ShootAudio.play()
 	
 	#current_bullet_count_in_single_magazine -=1
-	#weapon_anim()
+	weapon_anim()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
