@@ -1,15 +1,10 @@
-[gd_scene format=3 uid="uid://ckdingh5txht1"]
+[gd_scene load_steps=2 format=3 uid="uid://ckdingh5txht1"]
+
+[ext_resource type="Texture2D" uid="uid://b0nfug3bpmkqw" path="res://texture/boss/snake/sbody.png" id="1_voxph"]
 
 [node name="Body" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -5.0
-offset_right = 5.0
-offset_bottom = 10.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-color = Color(0.0392157, 0.321569, 0.0666667, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.0777283, -0.0224638)
+texture = ExtResource("1_voxph")
+offset = Vector2(-0.0259892, -0.0892412)

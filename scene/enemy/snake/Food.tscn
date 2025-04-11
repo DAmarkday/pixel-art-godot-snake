@@ -1,15 +1,8 @@
-[gd_scene format=3 uid="uid://b0hut878ar56i"]
+[gd_scene load_steps=2 format=3 uid="uid://b0hut878ar56i"]
+
+[ext_resource type="Texture2D" uid="uid://b7cf8oy8yy1w6" path="res://texture/boss/snake/sfood.png" id="1_rl02a"]
 
 [node name="Body" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -5.0
-offset_right = 5.0
-offset_bottom = 10.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-color = Color(0.854016, 0.894665, 0.292057, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rl02a")

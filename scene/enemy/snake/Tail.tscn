@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cipwnkfgcdgsh"]
+
+[ext_resource type="PackedScene" uid="uid://ckdingh5txht1" path="res://scene/enemy/snake/Body.tscn" id="1_8mhiw"]
+[ext_resource type="Texture2D" uid="uid://6m32ocraiy1k" path="res://texture/boss/snake/sTail.png" id="2_gntaf"]
+
+[node name="Tail" instance=ExtResource("1_8mhiw")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, 0)
+texture = ExtResource("2_gntaf")
+offset = Vector2(-0.948261, -0.111705)

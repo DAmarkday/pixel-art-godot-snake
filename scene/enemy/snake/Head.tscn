@@ -1,15 +1,10 @@
-[gd_scene format=3 uid="uid://bj4laowg7jsbh"]
+[gd_scene load_steps=2 format=3 uid="uid://bj4laowg7jsbh"]
+
+[ext_resource type="Texture2D" uid="uid://bbm2jopr0jd01" path="res://texture/boss/snake/shead.png" id="1_trs4u"]
 
 [node name="Body" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -5.0
-offset_right = 5.0
-offset_bottom = 10.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-color = Color(0.356376, 0.709456, 0.250088, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(49, -15)
+texture = ExtResource("1_trs4u")
+offset = Vector2(-40.9805, 15.0088)
