@@ -25,3 +25,24 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+#func _on_area_2d_body_entered(body):
+	#print('1111')
+	#if body is BossSnakeBody:
+		##Game.damage(Game.player,body)
+		##set_physics_process(false)
+		#
+		##var ins = _pre_hit_effect.instantiate()
+		##ins.global_position = global_position
+		#
+		##Game.map.add_child(ins)
+		#queue_free()
+	#pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area):
+	#if area is BossSnakeBody:
+	set_physics_process(false)
+	queue_free()
+	pass # Replace with function body.

@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj4laowg7jsbh"]
+[gd_scene load_steps=3 format=3 uid="uid://cl615hgkn5keu"]
 
+[ext_resource type="PackedScene" uid="uid://ckdingh5txht1" path="res://scene/enemy/snake/Body.tscn" id="1_0hgn5"]
 [ext_resource type="Texture2D" uid="uid://bbm2jopr0jd01" path="res://texture/boss/snake/shead.png" id="1_trs4u"]
 
-[node name="Body" type="Node2D"]
+[node name="Body" instance=ExtResource("1_0hgn5")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(49, -15)
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+disabled = false
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(8.07773, -0.0224638)
 texture = ExtResource("1_trs4u")
-offset = Vector2(-40.9805, 15.0088)
