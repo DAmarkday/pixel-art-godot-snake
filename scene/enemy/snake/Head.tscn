@@ -5,9 +5,6 @@
 
 [node name="Body" instance=ExtResource("1_0hgn5")]
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
-disabled = false
-
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(8.07773, -0.0224638)
 texture = ExtResource("1_trs4u")

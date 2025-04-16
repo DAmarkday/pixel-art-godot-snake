@@ -1,18 +1,18 @@
 extends Node2D
 class_name BossSnakeBody
 
-
+@onready var sprite2D = $Sprite2D
 var enemy_data:EnemyBossBodyData
-
-
 
 func _ready():
 	enemy_data = EnemyBossBodyData.new()
-	
-	enemy_data.on_hit.connect(on_hit)
-	enemy_data.on_death.connect(on_death)
+	sprite2D.material = sprite2D.material.duplicate() # 确保材质独立
+	#enemy_data.on_hit.connect(on_hit)
+	#enemy_data.on_death.connect(on_death)
 	
 	pass
+
+
 
 func on_hit(_damage):
 	#current_state = State.HIT
@@ -23,7 +23,17 @@ func on_hit(_damage):
 	#anim.play("hit")
 	#await anim.animation_finished
 	#current_state = State.IDLE
+	flash()
+	#var tween = create_tween()
+	#tween.tween_property(sprite2D,'modulate',Color.WHITE,0.1)
+	#tween.tween_property(sprite2D,'modulate',Color(1,1,1,1),0.1)
 	pass
+	
+func flash():
+	# 使用 Tween 动画控制 flash_amount
+	var tween = sprite2D.create_tween()
+	tween.tween_property(sprite2D.material, "shader_parameter/flash_amount", 1.0, 0.1) # 快速变白
+	tween.tween_property(sprite2D.material, "shader_parameter/flash_amount", 0.0, 0.3) # 缓慢恢复
 
 
 func on_death():
