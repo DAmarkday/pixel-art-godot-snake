@@ -9,7 +9,7 @@ enum State {
 # 导出参数，方便编辑器调整
 @export var speed: float = 100.0  # 蛇移动速度（降低到50.0，突出缓慢转弯）
 @export var base_segment_distance: float = 9.0  # 身体段基础间距（增大到16.0，宽松弧线）
-@export var eating_growth_factor: float = 0.2  # 增长比例（保持0.2）
+@export var eating_growth_factor: float = 2  # 增长比例（保持0.2）
 @export var turn_smoothing: float = 0.3  # 转弯平滑因子（降低到0.3，渐进转向）
 @export var path_smoothing: float = 0.5  # 路径曲线平滑因子（提高到0.5，圆润弧线）
 

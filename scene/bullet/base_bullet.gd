@@ -42,7 +42,7 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	#if area is BossSnakeBody:
-	set_physics_process(false)
-	queue_free()
+	if area.get_parent() is BossSnakeBody:
+		set_physics_process(false)
+		queue_free()
 	pass # Replace with function body.
