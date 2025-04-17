@@ -8,6 +8,7 @@
 radius = 8.06226
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa50s"]
+resource_local_to_scene = true
 shader = ExtResource("2_f6tqm")
 shader_parameter/flash_amount = 0.0
 

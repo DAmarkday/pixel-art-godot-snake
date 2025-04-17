@@ -4,9 +4,12 @@ class_name BossSnakeBody
 @onready var sprite2D = $Sprite2D
 var enemy_data:EnemyBossBodyData
 
+@onready var materialD = sprite2D.material
+
+
 func _ready():
 	enemy_data = EnemyBossBodyData.new()
-	sprite2D.material = sprite2D.material.duplicate() # 确保材质独立
+	#sprite2D.material = sprite2D.material.duplicate() # 确保材质独立
 	#enemy_data.on_hit.connect(on_hit)
 	#enemy_data.on_death.connect(on_death)
 	
@@ -32,8 +35,8 @@ func on_hit(_damage):
 func flash():
 	# 使用 Tween 动画控制 flash_amount
 	var tween = sprite2D.create_tween()
-	tween.tween_property(sprite2D.material, "shader_parameter/flash_amount", 1.0, 0.1) # 快速变白
-	tween.tween_property(sprite2D.material, "shader_parameter/flash_amount", 0.0, 0.3) # 缓慢恢复
+	tween.tween_property(materialD, "shader_parameter/flash_amount", 1.0, 0.1) # 快速变白
+	tween.tween_property(materialD, "shader_parameter/flash_amount", 0.0, 0.3) # 缓慢恢复
 
 
 func on_death():
