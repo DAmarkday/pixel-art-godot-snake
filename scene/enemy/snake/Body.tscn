@@ -4,27 +4,23 @@
 [ext_resource type="Texture2D" uid="uid://b0nfug3bpmkqw" path="res://texture/boss/snake/sbody.png" id="1_voxph"]
 [ext_resource type="Shader" path="res://scene/enemy/snake/Body.gdshader" id="2_f6tqm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_26smw"]
-radius = 8.06226
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qa50s"]
 resource_local_to_scene = true
 shader = ExtResource("2_f6tqm")
 shader_parameter/flash_amount = 0.0
 
-[node name="Body" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_26smw"]
+radius = 8.06226
+
+[node name="Body" type="CharacterBody2D"]
+collision_layer = 9
 script = ExtResource("1_e117f")
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_26smw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qa50s")
 position = Vector2(0.0777283, -0.0224638)
 texture = ExtResource("1_voxph")
 offset = Vector2(-0.0259892, -0.0892412)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_26smw")

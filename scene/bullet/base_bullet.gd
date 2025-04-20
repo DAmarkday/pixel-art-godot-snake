@@ -41,8 +41,8 @@ func _process(delta):
 	#pass # Replace with function body.
 
 
-func _on_area_2d_area_entered(area):
-	var body = area.get_parent()
+func _on_area_2d_body_entered(body):
+	#var body = body.get_parent()
 	if body is BossSnakeBody:
 		body.on_hit(5)
 		set_physics_process(false)

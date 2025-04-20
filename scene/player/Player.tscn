@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://b5nfr75tw1rhj"]
+[gd_scene load_steps=71 format=3 uid="uid://b5nfr75tw1rhj"]
 
 [ext_resource type="Texture2D" uid="uid://0pn7n051p4wd" path="res://texture/Without Sword (for gun)/Down/04 Stranded - Pack 4 back up-Idle Down.png" id="1_esny6"]
 [ext_resource type="Script" path="res://scene/player/player.gd" id="1_ylfd0"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://d0kbahlxf482d" path="res://texture/Without Sword (for gun)/Up/04 Stranded - Pack 4 back up-Idle Up.png" id="6_ktt6p"]
 [ext_resource type="Texture2D" uid="uid://bntafojuggskn" path="res://texture/Without Sword (for gun)/Up/04 Stranded - Pack 4 back up-Move Up.png" id="7_4ykoo"]
 [ext_resource type="Texture2D" uid="uid://bruslgw43o0fw" path="res://texture/Without Sword (for gun)/shadow.png" id="8_yqkgn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ljhw3"]
+radius = 7.0
+height = 18.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v2koc"]
 atlas = ExtResource("1_esny6")
@@ -470,6 +474,8 @@ texture = ExtResource("8_yqkgn")
 offset = Vector2(0, -3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -9)
+shape = SubResource("CapsuleShape2D_ljhw3")
 
 [node name="Body" type="Node2D" parent="."]
 
