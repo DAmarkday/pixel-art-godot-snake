@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpe255b6qy03e"]
+
+[ext_resource type="Texture2D" uid="uid://d6qcsvldnip4" path="res://icon.svg" id="1_2ytdw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i2eq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26wea"]
+size = Vector2(127, 127)
+
+[node name="Village" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ytdw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_i2eq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_26wea")
