@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg5musriyqksl"]
+
+[ext_resource type="Script" path="res://scene/npc/man.gd" id="1_f80um"]
+[ext_resource type="Texture2D" uid="uid://d6qcsvldnip4" path="res://icon.svg" id="1_w4f1o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujoj5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w4f1o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl3ip"]
+size = Vector2(4, 3)
+
+[node name="Man" type="CharacterBody2D"]
+script = ExtResource("1_f80um")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5.96046e-08, -1.5)
+scale = Vector2(0.03125, 0.0234375)
+sprite_frames = SubResource("SpriteFrames_ujoj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_jl3ip")

@@ -11,7 +11,7 @@ shader_parameter/flash_amount = 0.0
 
 [node name="Body" instance=ExtResource("1_0hgn5")]
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_ahna8")
 position = Vector2(8.07773, -0.0224638)
 texture = ExtResource("1_trs4u")

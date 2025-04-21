@@ -7,6 +7,7 @@ const _player = preload("res://scene/player/Player.tscn")
 # Called when the node enters the scene tree for the first time.
 
 var _defaultWeapon = preload("res://scene/weapon/BaseWeapon.tscn")
+var _village = preload("res://scene/building/village.tscn")
 
 func _ready() -> void:
 	# 初始化地图
@@ -18,14 +19,25 @@ func _ready() -> void:
 		# 设置贪吃蛇活动范围和食物生成范围
 		snakeNode.setCurActiveRange(w,h)
 		add_child(snakeNode)
+		
 		add_child(instance)
 		# 规范主角摄像机范围
 		instance.limitPlayerCamera(0,w,h,0)
 		instance.position = Vector2(320,160)
-		
 		#挂载武器
 		var wNode=_defaultWeapon.instantiate()
 		Game.player.weapon_node.add_child(wNode)
+		
+		
+		# 生成房屋
+		const margin =10
+		for i in range(0,10):
+			var village = _village.instantiate()
+			village.position = Vector2(randf_range(margin*i, w - (margin*i)),
+			randf_range(margin*i,h - (margin*i)))
+			add_child(village)
+			print(village.position)
+		
 	)
 	
 	add_child(mapNode)
