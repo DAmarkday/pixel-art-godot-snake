@@ -3,12 +3,11 @@ class_name BaseBullet
 
 @export var speed = 500
 @export var dir = Vector2.ZERO
-
 var _tick = 0
-
+var velocity = null
 # physic默认在项目设置里是60帧，process就是实际游戏帧率
 func _physics_process(delta):
-	global_position += dir *delta*  speed
+	global_position += velocity*delta
 	_tick+=delta
 	if Engine.get_physics_frames() % 20:
 		if _tick>=3:
@@ -18,6 +17,7 @@ func _physics_process(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	velocity=dir *  speed
 	#look_at(get_global_mouse_position())
 	pass # Replace with function body.
 
@@ -41,10 +41,14 @@ func _process(delta):
 	#pass # Replace with function body.
 
 
-func _on_area_2d_body_entered(body):
-	#var body = body.get_parent()
-	if body is BossSnakeBody:
-		body.on_hit(5)
-		set_physics_process(false)
-		queue_free()
-	pass # Replace with function body.
+#func _on_area_2d_body_entered(body):
+	##var body = body.get_parent()
+	#if body is BossSnakeBody:
+		#body.on_hit(5)
+		#set_physics_process(false)
+		#queue_free()
+		#
+	##if body is Village:
+		##set_physics_process(false)
+		##queue_free()
+	#pass # Replace with function body.

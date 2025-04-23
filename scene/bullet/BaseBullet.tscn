@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl8d7dkyylglm"]
+[gd_scene load_steps=4 format=3 uid="uid://bl8d7dkyylglm"]
 
 [ext_resource type="Script" path="res://scene/bullet/base_bullet.gd" id="1_gwi26"]
+[ext_resource type="Script" path="res://scene/bullet/area_2d.gd" id="2_8sjeh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpv3f"]
 size = Vector2(10, 2)
@@ -16,11 +17,10 @@ offset_bottom = 1.0
 color = Color(1, 1, 0.172549, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-monitorable = false
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_8sjeh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_jpv3f")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

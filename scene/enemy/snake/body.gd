@@ -53,3 +53,15 @@ func on_death():
 	#queue_free()
 
 	
+
+
+#func _on_area_2d_area_entered(area: Area2D) -> void:
+	##print("333333")
+	#if area is BaseBulletArea:
+		#print("1212")
+		#set_physics_process(false)
+		##queue_free()
+		#area.clear()
+		#pass
+	#
+	#pass # Replace with function body.
