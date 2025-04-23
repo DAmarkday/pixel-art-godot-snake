@@ -30,13 +30,13 @@ func _ready() -> void:
 		
 		
 		# 生成房屋
-		const margin =10
-		for i in range(0,10):
-			var village = _village.instantiate()
-			village.position = Vector2(randf_range(margin*i, w - (margin*i)),
-			randf_range(margin*i,h - (margin*i)))
-			add_child(village)
-			print(village.position)
+		#const margin =10
+		#for i in range(0,10):
+			#var village = _village.instantiate()
+			#village.position = Vector2(randf_range(margin*i, w - (margin*i)),
+			#randf_range(margin*i,h - (margin*i)))
+			#add_child(village)
+			#print(village.position)
 		
 	)
 	
