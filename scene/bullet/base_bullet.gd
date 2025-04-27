@@ -33,8 +33,16 @@ func _ready():
 func _process(delta):
 	pass
 
+
+func rotate_around_pivot_optimized(node: Node2D, pivot_position: Vector2, radians: float):
+	var transform = node.global_transform
+	transform = transform.translated(-pivot_position)
+	transform = transform.rotated(radians)
+	transform = transform.translated(pivot_position)
+	node.global_transform = transform
+
 # 提供方法让房屋修改子弹方向
-func set_direction(new_direction: Vector2) -> void:
+func set_direction(new_direction: Vector2,n:Node2D,p:Vector2) -> void:
 	#pass
 	 #反弹前的矢量速度和反弹后的矢量做角度差
 	#var handledVector = new_direction.normalized()
@@ -49,7 +57,7 @@ func set_direction(new_direction: Vector2) -> void:
 	var new_velocity = new_direction.normalized()
 	#
 	# 计算反弹前后方向的角度差
-	var angle_diff = new_velocity.angle_to(old_velocity)
+	var angle_diff = old_velocity.angle_to(new_velocity)
 	# 如果贴图朝上，需在玩家脚本中设置初始旋转：
 	# sprite.rotation = new_velocity.angle() - PI / 2
 	
@@ -57,8 +65,9 @@ func set_direction(new_direction: Vector2) -> void:
 	#var new_offset = offset.rotated(angle_diff)
 	#position = position + new_offset
 	#sprite.pivot_offset = Vector2(0,0)
+	rotate_around_pivot_optimized(n,p,angle_diff)
 
-	rotation -= angle_diff  # 基于当前旋转减去角度差
+	#rotation -= angle_diff  # 基于当前旋转减去角度差
 	velocity = new_velocity * speed
 	# 调试：打印角度信息
 	# print("Angle diff: ", rad_to_deg(angle_diff), " Sprite rotation: ", rad_to_deg(sprite.rotation))

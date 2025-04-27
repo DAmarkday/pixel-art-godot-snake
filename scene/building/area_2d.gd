@@ -40,18 +40,19 @@ func _process(delta: float) -> void:
 		#draw_line(to_local(draw_position), to_local(draw_position + draw_reflection * 50), Color.GREEN, 2.0)
 		
 func _on_area_entered(area: Area2D) -> void:
+	print("bullet is ")
 	if area is BaseBulletArea:
 		var bullet = area.get_parent() as BaseBullet
 		#var collision_point = node.global_position
 		#var normal = _calculate_normal(collision_point)
 		# 计算子弹的反弹速度
 		#node.velocity = node.velocity.bounce(normal).normalized() * node.speed
-		
+		bullet.visible =false
 		
 		var space_state = get_world_2d().direct_space_state
 		var query = PhysicsRayQueryParameters2D.create(
-		bullet.global_position - bullet.velocity.normalized() * 10,
-		bullet.global_position + bullet.velocity.normalized() * 10
+		bullet.global_position - bullet.velocity.normalized() * 20,
+		bullet.global_position + bullet.velocity.normalized() * 20
 		)
 		query.exclude = [bullet]
 		query.collision_mask = collision_mask
@@ -62,9 +63,12 @@ func _on_area_entered(area: Area2D) -> void:
 			var incident = bullet.velocity.normalized()
 			# 计算反射方向：R = I - 2 * (I · N) * N
 			var reflection = incident - 2 * incident.dot(normal) * normal
-			print("bullet is ",bullet.position,collision.position)
+			#print("bullet is ",bullet.position,collision.position)
 			#pivot_offset
-			bullet.set_direction(reflection)
+			await get_tree().process_frame
+			bullet.set_direction(reflection,bullet,collision.position)
+			bullet.global_position = collision.position
+			bullet.visible = true
 			#offset. 
 			# 调试：绘制法线和反射方向
 			#queue_redraw()
@@ -73,4 +77,6 @@ func _on_area_entered(area: Area2D) -> void:
 			#draw_position = collision.position
 			#await get_tree().create_timer(0.1).timeout
 			#queue_redraw()
+		else:
+			print("No collision detected")
 	pass # Replace with function body.
