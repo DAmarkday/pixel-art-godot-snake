@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://kjdtvq41yrsh"]
+[gd_scene load_steps=10 format=4 uid="uid://kjdtvq41yrsh"]
 
 [ext_resource type="Script" path="res://scene/map/map.gd" id="1_v13ql"]
 [ext_resource type="Texture2D" uid="uid://btjht08xbphf5" path="res://texture/Tileset.png" id="1_vfvhl"]
 [ext_resource type="PackedScene" uid="uid://bclwtlksgfsjy" path="res://scene/building/farmLand/FarmLand.tscn" id="3_4dvlt"]
 [ext_resource type="PackedScene" uid="uid://dpe255b6qy03e" path="res://scene/building/house/village.tscn" id="3_ltfxp"]
+[ext_resource type="PackedScene" uid="uid://dg5musriyqksl" path="res://scene/npc/man.tscn" id="5_ii1hk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbw87"]
 texture = ExtResource("1_vfvhl")
@@ -360,6 +361,9 @@ tile_set = SubResource("TileSet_fs8yl")
 
 [node name="container" type="Node2D" parent="."]
 
+[node name="Man2" parent="container" instance=ExtResource("5_ii1hk")]
+position = Vector2(1201, 691)
+
 [node name="FarmLand3" parent="container" instance=ExtResource("3_4dvlt")]
 position = Vector2(1253, 717)
 
@@ -381,3 +385,9 @@ position = Vector2(1271, 614)
 
 [node name="FarmLand" parent="container" instance=ExtResource("3_4dvlt")]
 position = Vector2(662, 180)
+
+[node name="Man" parent="container" instance=ExtResource("5_ii1hk")]
+position = Vector2(564, 243)
+
+[node name="Man3" parent="container" instance=ExtResource("5_ii1hk")]
+position = Vector2(364, 893)

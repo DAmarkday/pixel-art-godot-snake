@@ -8,12 +8,14 @@ const _player = preload("res://scene/player/Player.tscn")
 
 var _defaultWeapon = preload("res://scene/weapon/BaseWeapon.tscn")
 var _village = preload("res://scene/building/house/village.tscn")
+#var _man = preload("res://scene/npc/man.tscn")
 
 func _ready() -> void:
 	# 初始化地图
 	var mapNode=_map.instantiate()
 	var snakeNode=_snake.instantiate()
 	var instance = _player.instantiate()
+	#var npc = _man.instantiate()
 	
 	mapNode.connect('mapIsReady',func (w,h):
 		# 设置贪吃蛇活动范围和食物生成范围

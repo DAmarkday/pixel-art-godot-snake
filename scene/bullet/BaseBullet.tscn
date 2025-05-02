@@ -92,6 +92,7 @@ animations = [{
 radius = 2.8
 
 [node name="BaseBullet" type="Node2D"]
+z_index = 3
 script = ExtResource("1_gwi26")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
