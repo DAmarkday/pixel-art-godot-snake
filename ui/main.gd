@@ -7,7 +7,7 @@ const _player = preload("res://scene/player/Player.tscn")
 # Called when the node enters the scene tree for the first time.
 
 var _defaultWeapon = preload("res://scene/weapon/BaseWeapon.tscn")
-var _village = preload("res://scene/building/village.tscn")
+var _village = preload("res://scene/building/house/village.tscn")
 
 func _ready() -> void:
 	# 初始化地图
