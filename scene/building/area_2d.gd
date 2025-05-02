@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		#draw_line(to_local(draw_position), to_local(draw_position + draw_reflection * 50), Color.GREEN, 2.0)
 		
 func _on_area_entered(area: Area2D) -> void:
-	print("bullet is ")
+	# 如果在反弹点有时存在重叠可能是误差导致的问题
 	if area is BaseBulletArea:
 		var bullet = area.get_parent() as BaseBullet
 		#var collision_point = node.global_position
@@ -48,7 +48,6 @@ func _on_area_entered(area: Area2D) -> void:
 		# 计算子弹的反弹速度
 		#node.velocity = node.velocity.bounce(normal).normalized() * node.speed
 		bullet.visible =false
-		
 		var space_state = get_world_2d().direct_space_state
 		var query = PhysicsRayQueryParameters2D.create(
 		bullet.global_position - bullet.velocity.normalized() * 20,
@@ -66,11 +65,13 @@ func _on_area_entered(area: Area2D) -> void:
 			#print("bullet is ",bullet.position,collision.position)
 			#pivot_offset
 			await get_tree().process_frame
-			bullet.set_direction(reflection,bullet,collision.position)
-			bullet.global_position = collision.position
+			# 找到镜像反射的点
+			var w=bullet.find_symmetric_point(bullet.global_position,normal,collision.position)
+			bullet.set_direction(reflection)
+			bullet.global_position = w
 			bullet.visible = true
-			#offset. 
-			# 调试：绘制法线和反射方向
+			
+			#调试：绘制法线和反射方向
 			#queue_redraw()
 			#draw_normal = normal
 			#draw_reflection = reflection
@@ -80,3 +81,4 @@ func _on_area_entered(area: Area2D) -> void:
 		else:
 			print("No collision detected")
 	pass # Replace with function body.
+	

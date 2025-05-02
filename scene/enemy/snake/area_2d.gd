@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is BaseBulletArea:
+	if area is BaseBulletArea && area.isCanHurt():
 		set_physics_process(false)
 		area.clear()
 		get_parent().on_hit(5)

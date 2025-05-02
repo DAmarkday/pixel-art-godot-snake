@@ -11,4 +11,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func clear():
-	get_parent().queue_free()
+	get_parent().deactive()
+	
+func isCanHurt():
+	return get_parent().isBulletActive()
